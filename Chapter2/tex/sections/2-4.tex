@@ -1,0 +1,40 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{align*}
+    w^\star
+    = & \arg \min_w \mathcal{R}^{struct}_\mathcal{D}(w) \\
+    = & \arg \min_w \mathcal{R}^{emp}_\mathcal{D}(w)
+        + \frac{1}{2} \lambda \| w \|^2 \\
+    = & \arg \min_w \frac{1}{2} \| Y - X^T w \|^2
+        + \frac{1}{2} \lambda \| w \|^2
+\end{align*}
+
+then we get
+$\mathcal{R}(w)
+= \frac{1}{2} \| Y - X^T w \|^2
++ \frac{1}{2} \lambda \| w \|^2$
+\begin{align*}
+    \nabla_w \mathcal{R}(w)
+    = & \nabla_w \big( \frac{1}{2} \| Y - X^T w \|^2
+        + \frac{1}{2} \lambda \| w \|^2 \big) \\
+    = & (Y - X^T w)^T (-X^T) + \lambda w^T \\
+    = & w^T X X^T - Y^T X^T + \lambda w^T
+\end{align*}
+
+let $\nabla_w \mathcal{R}(w) = 0$, then
+\begin{align*}
+    w^T X X^T - Y^T X^T + \lambda w^T
+    = & 0 \\
+    w^T X X^T + \lambda w^T
+    = & Y^T X^T \\
+    w^T (X X^T + \lambda I)
+    = & Y^T X^T \\
+    w^T
+    = & Y^T X^T (X X^T + \lambda I)^{-1} \\
+    w
+    = & (X X^T + \lambda I)^{-1} X Y
+\end{align*}
+
+\end{document}

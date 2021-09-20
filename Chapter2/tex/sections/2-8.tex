@@ -1,0 +1,39 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{align*}
+    \mathcal{R}(f)
+    = & \mathbb{E}_{(x,y) \sim p_r(y|x)}
+        \big[ \big( y -f(x) \big)^2 \big] \\
+    = & \int \int \big( y - f(x) \big)^2
+        p_r(x,y)dxdy \\
+    = & \int \int \big( y - f(x) \big)^2
+        p_r(y|x) p_r(x) dxdy
+\end{align*}
+
+\begin{align*}
+    \frac{\partial}{\partial f}\mathcal{R}(f)
+    = & \frac{\partial}{\partial f}
+        \int \int \big( y - f(x) \big)^2
+        p_r(y|x) p_r(x) dxdy \\
+    = & -2 \int \int \big( y - f(x) \big)
+        p_r(y|x) p_r(x) dxdy
+\end{align*}
+
+let
+$\frac{\partial}{\partial f}\mathcal{R}(f) = 0$,
+then
+\begin{align*}
+    \int \int y p_r(y|x) p_r(x) dxdy
+    = & \int \int f(x) p_r(y|x)p_r(x)dxdy \\
+    \mathbb{E}_{x \sim p_r(x)} \big[
+        \mathbb{E}_{y \sim p_r(y|x)} \big[
+        y \big] \big]
+    = & \mathbb{E}_{x \sim p_r(x)}
+        \big[ f(x) \big] \\
+    f^\star(x)
+    = & \mathbb{E}_{y \sim p_r(y|x)}\big[ y \big]
+\end{align*}
+
+\end{document}

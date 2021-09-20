@@ -1,0 +1,136 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection*{(1)}
+
+we have
+$(x^{(1)}, \cdots, x^{(n)}) \sim \mathcal{N}(\mu, \sigma^2)$,
+then
+\begin{align*}
+    p(X; \mu, \sigma)
+    = & \prod^N_{n=1} \frac{1}{\sigma \sqrt{2 \pi}}
+        \exp \big(
+            - \frac{(x^{(n)} - \mu)^2}{2 \sigma^2}
+        \big) \\
+    \log p(X; \mu, \sigma)
+    = & \log \prod^N_{n=1} \frac{1}{\sigma \sqrt{2 \pi}}
+        \exp \big(
+            - \frac{(x^{(n)} - \mu)^2}{2 \sigma^2}
+        \big) \\
+    = & \sum^N_{n=1} \big(
+            - \frac{(x^{(n)}-\mu)}{2 \sigma^2}
+            - \log \sigma \sqrt{2 \pi}
+        \big) \\
+    \nabla_\mu \log p(X; \mu, \sigma)
+    = & \nabla_\mu \sum^N_{n=1} \big(
+            - \frac{(x^{(n)}-\mu)^2}{2 \sigma^2}
+            - \log \sigma \sqrt{2 \pi}
+        \big) \\
+    = & - \frac{1}{2 \sigma^2} \nabla_\mu
+        \sum^N_{n=1} \big(
+            (x^{(n)}-\mu)^2
+        \big) \\
+    = & \frac{1}{\sigma^2}
+        \sum^N_{n=1}\big(x^{(n)} - \mu\big)
+\end{align*}
+
+let
+$\nabla_\mu \log p(X; \mu, \sigma) = 0$,
+then
+\begin{align*}
+    \frac{1}{\sigma^2}
+    \sum^N_{n=1}\big(x^{(n)} - \mu\big)
+    = & 0 \\
+    \sum^N_{n=1}x^{(n)}
+    = & N \mu \\
+    \mu^{ML}
+    = & \frac{1}{N}\sum^N_{n=1}x^{(n)}
+\end{align*}
+
+\subsection*{(2)}
+
+we have
+\begin{align*}
+    \mu \sim \mathcal{N}(\mu_0, \sigma_0^2) \\
+    x \sim \mathcal{N}(\mu, \sigma^2)
+\end{align*}
+then
+\begin{align*}
+    p(\mu | X; \sigma, \mu_0, \sigma_0)
+    = & \ \frac{p(X|\mu; \sigma)
+        p(\mu; \mu_0, \sigma_0)}
+        {p(X; \mu, \sigma)} \\
+    \propto & \ p(X|\mu; \sigma)
+        p(\mu; \mu_0, \sigma_0) \\
+    = & \prod^N_{n=1}
+        \frac{1}{\sigma\sqrt{2\pi}}
+        \exp\big( - \frac{(x^{(n)}-\mu)^2}
+        {2 \sigma^2} \big)
+        \frac{1}{\sigma_0 \sqrt{2\pi}}
+        \exp\big( - \frac{(\mu - \mu_0)^2}
+        {2 \sigma_0^2} \big) \\
+    \log p(\mu | X; \sigma, \mu_0, \sigma_0)
+    = & \log \prod^N_{n=1}
+        \frac{1}{\sigma\sqrt{2\pi}}
+        \exp\big( - \frac{(x^{(n)}-\mu)^2}
+        {2 \sigma^2} \big)
+        \frac{1}{\sigma_0 \sqrt{2\pi}}
+        \exp\big( - \frac{(\mu - \mu_0)^2}
+        {2 \sigma_0^2} \big) \\
+    = & \sum^N_{n=1} \big(
+        - \frac{(x^{(n)} - \mu)^2}{2 \sigma^2}
+        - \log \sigma \sqrt{2 \pi}
+        \big)
+        + \big(
+        - \frac{(\mu - \mu_0)^2}{2 \sigma_0^2}
+        - \log \sigma_0 \sqrt{2\pi}
+        \big) \\
+    \nabla_\mu \log p(\mu | X; \sigma, \mu_0, \sigma_0)
+    = & \nabla_\mu \sum^N_{n=1} \big(
+        - \frac{(x^{(n)} - \mu)^2}{2 \sigma^2}
+        - \log \sigma \sqrt{2 \pi}
+        \big)
+        + \big(
+        - \frac{(\mu - \mu_0)^2}{2 \sigma_0^2}
+        - \log \sigma_0 \sqrt{2\pi}
+        \big) \\
+    = & \nabla_\mu \sum^N_{n=1} \big(
+        - \frac{(x^{(n)} - \mu)^2}{2 \sigma^2}
+        \big)
+        + \big(
+        - \frac{(\mu - \mu_0)^2}{2 \sigma_0^2}
+        \big) \\
+    = & \sum^N_{n=1} \big(
+        \frac{1}{\sigma^2}(x^{(n)} - \mu)
+        \big)
+        + \big(
+        - \frac{1}{\sigma_0^2} (\mu - \mu_0)
+        \big)
+\end{align*}
+
+let
+$\nabla_\mu \log p(\mu | X; \sigma, \mu_0, \sigma_0) = 0$,
+then
+\begin{align*}
+    0
+    = & \sum^N_{n=1} \big(
+    \frac{1}{\sigma^2}(x^{(n)} - \mu)
+    \big)
+    + \big(
+    - \frac{1}{\sigma_0^2} (\mu - \mu_0)
+    \big) \\
+    \frac{1}{\sigma^2}\sum^N_{n=1}x^{(n)}
+    - \frac{1}{\sigma^2} N \mu
+    = & \frac{1}{\sigma_0^2} \mu
+        - \frac{1}{\sigma_0^2} \mu_0 \\
+    (\frac{N}{\sigma^2} + \frac{1}{\sigma_0^2})\mu
+    = & \frac{1}{\sigma^2}\sum^N_{n=1}x^{(n)}
+        + \frac{1}{\sigma_0^2} \mu_0 \\
+    \mu^{MAP}
+    = & \frac{\frac{1}{\sigma^2}\sum^N_{n=1}x^{(n)}
+        + \frac{1}{\sigma_0^2} \mu_0}
+        {\frac{N}{\sigma^2} + \frac{1}{\sigma_0^2}}
+\end{align*}
+
+\end{document}

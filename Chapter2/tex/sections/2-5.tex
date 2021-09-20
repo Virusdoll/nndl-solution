@@ -1,0 +1,37 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+we have $y \sim \mathcal{N}(w^Tx, \beta)$, then
+\begin{align*}
+    p(Y; w^TX, \beta)
+    = & \prod^N_{n=1} \frac{1}{\sqrt{2\pi\beta}}
+        \exp\big( - \frac{(y^{(n)} - w^T x^{(n)})^2}{2\beta} \big) \\
+    \log p(Y; w^TX, \beta)
+    = & \log \prod^N_{n=1} \frac{1}{\sqrt{2\pi\beta}}
+        \exp\big( - \frac{(y^{(n)} - w^T x^{(n)})^2}{2\beta} \big) \\
+    = & \sum^N_{n=1} \big(
+        - \frac{(y^{(n)} - w^T x^{(n)})^2}{2 \beta}
+        - \log \sqrt{2 \pi \beta} \big) \\
+    \nabla_w \log p(Y; w^TX, \beta)
+    = & \nabla_w \sum^N_{n=1} \big(
+        - \frac{(y^{(n)} - w^T x^{(n)})^2}{2 \beta}
+        - \log \sqrt{2 \pi \beta} \big) \\
+    = & \nabla_w \sum^N_{n=1} \big(
+        - \frac{(y^{(n)} - w^T x^{(n)})^2}{2 \beta}
+        \big) \\
+    = & - \frac{1}{2\beta} \nabla_w 
+        (Y - X^T w)^T(Y - X^T w) \\
+    = & - \frac{1}{2 \beta} \nabla_w
+        (Y^TY - 2 Y^TX^Tw + w^TXX^Tw) \\
+    = & - \frac{1}{\beta} (- Y^TX^T + w^TXX^T)
+\end{align*}
+
+let $\nabla_w \log p(Y; w^TX, \beta) = 0$, then
+\begin{align*}
+    w^TXX^T = & Y^TX^T \\
+    w^T = & Y^TX^T(XX^T)^{-1} \\
+    w = & (XX^T)^{-1}XY
+\end{align*}
+
+\end{document}

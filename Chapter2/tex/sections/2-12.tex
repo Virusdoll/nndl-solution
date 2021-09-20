@@ -1,0 +1,86 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+查准率
+\begin{align*}
+    \mathcal{P}_c
+    = & \frac{TP_c}{TP_c + FP_c} \\
+    \mathcal{P}_1
+    = & \frac{1}{1 + 1} = \frac{1}{2} \\
+    \mathcal{P}_2
+    = & \frac{2}{2 + 2} = \frac{1}{2} \\
+    \mathcal{P}_3
+    = & \frac{2}{2 + 1} = \frac{2}{3}
+\end{align*}
+
+查全率
+\begin{align*}
+    \mathcal{R}_c
+    = & \frac{TP_c}{TP_c + FN_c} \\
+    \mathcal{R}_1
+    = & \frac{1}{1 + 1} = \frac{1}{2} \\
+    \mathcal{R}_2
+    = & \frac{2}{2 + 1} = \frac{2}{3} \\
+    \mathcal{R}_3
+    = & \frac{2}{2 + 2} = \frac{1}{2}
+\end{align*}
+
+F1值
+\begin{align*}
+    \mathcal{F}_c
+    = & \frac{(1 + 1^2) * \mathcal{P}_c * \mathcal{R}_c}
+      {1^2 * \mathcal{P}_c + \mathcal{R}_c} \\
+    \mathcal{F}_1
+    = & \frac{2 * \frac{1}{2} * \frac{1}{2}}
+      {1 * \frac{1}{2} + \frac{1}{2}}
+    = \frac{1}{2} \\
+    \mathcal{F}_2
+    = & \frac{2 * \frac{1}{2} * \frac{2}{3}}
+      {1 * \frac{1}{2} + \frac{2}{3}}
+    = \frac{4}{5} \\
+    \mathcal{F}_3
+    = & \frac{2 * \frac{2}{3} * \frac{1}{2}}
+      {1 * \frac{2}{3} + \frac{1}{2}}
+    = \frac{4}{7}
+\end{align*}
+
+宏平均
+\begin{align*}
+    \mathcal{P}_{macro}
+    = & \frac{1}{C} \sum^C_{c=1} \mathcal{P}_c
+    = \frac{1}{3} (\frac{1}{2} + \frac{1}{2} + \frac{2}{3})
+    = \frac{5}{9} \\
+    \mathcal{R}_{macro}
+    = & \frac{1}{C} \sum^C_{c=1} \mathcal{R}_c
+    = \frac{1}{3} (\frac{1}{2} + \frac{2}{3} + \frac{1}{2})
+    = \frac{5}{9} \\
+    \mathcal{F}1_{macro}
+    = & \frac{2 * \mathcal{P}_{macro} * \mathcal{R}_{macro}}
+      {\mathcal{P}_{macro} + \mathcal{R}_{macro}}
+    = \frac{2 * \frac{5}{9} * \frac{5}{9}}
+      {\frac{9}{5} + \frac{5}{9}}
+    = \frac{5}{9}
+\end{align*}
+
+微平均
+\begin{align*}
+    \mathcal{P}_{micro}
+    = & \frac{\sum^C_{c=1}TP_c}
+      {\sum^C_{c=1}TP_c + \sum^C_{c=1}FP_c}
+    = \frac{5}{5 + 4}
+    = \frac{5}{9} \\
+    \mathcal{P}_{micro}
+    = & \frac{\sum^C_{c=1}TP_c}
+      {\sum^C_{c=1}TP_c + \sum^C_{c=1}FN_c}
+    = \frac{5}{5 + 4}
+    = \frac{5}{9} \\
+    \mathcal{F}1_{micro}
+    = & \frac{2 * \mathcal{P}_{micro} * \mathcal{R}_{micro}}
+      {\mathcal{P}_{micro} + \mathcal{R}_{micro}}
+    = \frac{2 * \frac{5}{9} * \frac{5}{9}}
+      {\frac{5}{9} + \frac{5}{9}}
+    = \frac{5}{9}
+\end{align*}
+
+\end{document}

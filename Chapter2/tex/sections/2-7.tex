@@ -1,0 +1,23 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{align*}
+    \lim_{N \to \infty}\mu^{MAP}
+    = & \lim_{N \to \infty}
+        \frac{\frac{1}{\sigma^2}\sum^N_{n=1}x^{(n)}
+        + \frac{1}{\sigma_0^2} \mu_0}
+        {\frac{N}{\sigma^2} + \frac{1}{\sigma_0^2}} \\
+    = & \lim_{N \to \infty}
+        \frac{\sum^N_{n=1}x^{(n)}
+        + \frac{\sigma^2}{\sigma_0^2} \mu_0}
+        {N + \frac{\sigma^2}{\sigma_0^2}} \\
+    = & \lim_{N \to \infty}
+        \frac{\sum^N_{n=1}x^{(n)}}
+        {N + \frac{\sigma^2}{\sigma_0^2}}
+        + \frac{\frac{\sigma^2}{\sigma_0^2} \mu_0}
+        {N + \frac{\sigma^2}{\sigma_0^2}} \\
+    \approx & \frac{1}{N} \sum^N_{n=1}x^{(n)}
+\end{align*}
+
+\end{document}

@@ -1,0 +1,39 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+Suppose: $y$ has shape $(n, 1)$, $x$ has shape $(n, m)$, $w$ has shape $(m, 1)$
+\begin{align*}
+    \mathcal{R}(w)
+    = & \frac{1}{2} \sum^N_{n=1} r^{(n)}
+        \big( y^{(n)} - w^T x^{(n)} \big)^2 \\
+    = & \frac{1}{2} \sum^N_{n=1} \big( y^{(n)} - w^T x^{(n)} \big)
+        r^{(n)} \big( y^{(n)} - w^T x^{(n)} \big) \\
+    = & \frac{1}{2} \big( y - x w \big)^T
+    r \big( y - x w \big)
+\end{align*}
+
+and, $r = diag(r^{(1)}, \cdots, r^{(n)})$
+\begin{align*}
+    \nabla_w \mathcal{R}
+    = & \frac{1}{2} \nabla_w (y^T r y - w^T x^T r y
+        - y r x w + w^T x^T r x w) \\
+    = & \frac{1}{2} \nabla_w (y^T r y - 2 y^T r x w
+        + w^T x^T r x w) \\
+    = & \frac{1}{2} (- 2 y^T r x + 2 w^T x^T r x) \\
+    = & w^T x^T r x - y^T r x       
+\end{align*}
+
+Let $\nabla_w \mathcal{R} = 0$, then
+\begin{align*}
+    w^T x^T r x = & y^T r x \\
+            w^T = & y^T r x (x^T r x)^{-1} \\
+      w^{\star} = & (x^T r x)^{-1} x^T r y
+\end{align*}
+
+$r$控制了每个测试数据对损失的权重, 故可以决定当前权重主要受哪几个测试数据影响.\\
+事实上，$\mathcal{R}(w)$是Locally weighted linear regression的损失函数.\\
+该方法的主要思路为: 对于每一个测试数据的预测结果, 其附近的训练数据对其的影响应该比远处的训练数据对其的影响大.\\
+在实现中, 对每个输入$x$, 我们都根据某个分布(比如高斯分布)得到单独的$r$, 再通过$r$在训练数据上计算一个单独的$w$,最终求出$\hat{y}$.
+
+\end{document}

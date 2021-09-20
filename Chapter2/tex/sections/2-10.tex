@@ -1,0 +1,59 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{align*}
+    \mathbb{E}_\mathcal{D} \big[ \big(
+        f_\mathcal{D}(x) - f^\star(x)
+    \big)^2 \big]
+    = & \mathbb{E}_\mathcal{D} \big[ \big(
+        f_\mathcal{D}(x)
+        - \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]
+        + \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]
+        - f^\star(x)
+        \big)^2 \big] \\
+    = & \mathbb{E}_\mathcal{D} \big[
+        \big( f_\mathcal{D}(x)
+        - \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)] \big)^2 \\
+        & + 2 \big( f_\mathcal{D}(x)
+        - \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)] \big)
+        \big( \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]
+        - f^\star(x) \big) \\
+        & + \big( \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]
+        - f^\star(x) \big)^2
+        \big] \\
+    = & \mathbb{E}_\mathcal{D} \big[
+        \big( f_\mathcal{D}(x)
+        - \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]
+        \big)^2 \big] \\
+        & + \mathbb{E}_\mathcal{D} \big[
+        2 f_\mathcal{D}(x) \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]
+        - 2 f_\mathcal{D}(x) f^\star(x)
+        - \mathbb{E} [f_\mathcal{D}]^2
+        + f^\star(x)^2
+        \big] \\
+    = & \mathbb{E}_\mathcal{D} \big[
+        \big( f_\mathcal{D}(x)
+        - \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]
+        \big)^2 \big] \\
+        & + 2 \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]^2
+        - 2 \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]f^\star(x)
+        - \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]^2
+        + f^\star(x)^2 \\
+    = & \mathbb{E}_\mathcal{D} \big[
+        \big( f_\mathcal{D}(x)
+        - \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]
+        \big)^2 \big] \\
+        & + 2 \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]^2
+        - 2 \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]f^\star(x)
+        - \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]^2
+        + f^\star(x)^2 \\
+    = & \mathbb{E}_\mathcal{D} \big[
+        \big( f_\mathcal{D}(x)
+        - \mathbb{E}_\mathcal{D}[f_\mathcal{D}(x)]
+        \big)^2 \big]
+        + \big( \mathbb{E}[f_\mathcal{D}(x)])
+        - f^\star(x) \big)^2
+\end{align*}
+
+\end{document}

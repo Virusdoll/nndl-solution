@@ -9,31 +9,38 @@
     = & \int \int \big( y - f(x) \big)^2
         p_r(x,y)dxdy \\
     = & \int \int \big( y - f(x) \big)^2
-        p_r(y|x) p_r(x) dxdy
-\end{align*}
-
-\begin{align*}
-    \frac{\partial}{\partial f}\mathcal{R}(f)
-    = & \frac{\partial}{\partial f}
-        \int \int \big( y - f(x) \big)^2
         p_r(y|x) p_r(x) dxdy \\
-    = & -2 \int \int \big( y - f(x) \big)
-        p_r(y|x) p_r(x) dxdy
+    = & \mathbb{E}_{x \sim p_r(x)} \big[
+        \mathbb{E}_{y \sim p_r(y|x)} \big[
+        y^2 -2yf(x) + f^2(x)
+        \big] \big] \\
+    = & \mathbb{E}_{x \sim p_r(x)} \big[
+        \mathbb{E}_{y \sim p_r(y|x)} \big[
+        y^2 \big]
+        - 2 \mathbb{E}_{y \sim p_r(y|x)} \big[
+        y \big] f(x)
+        + f^2(x) \big] \\
+    \ge & \mathbb{E}_{x \sim p_r(x)} \big[
+        \mathbb{E}_{y \sim p_r(y|x)}^2 \big[
+        y \big]
+        - 2 \mathbb{E}_{y \sim p_r(y|x)} \big[
+        y \big] f(x)
+        + f^2(x) \big] \\
+    = & \mathbb{E}_{x \sim p_r(x)} \big[
+        \big( \mathbb{E}_{y \sim p_r(y|x)}\big[y\big]
+        - f(x) \big)^2 \big]
 \end{align*}
 
 let
-$\frac{\partial}{\partial f}\mathcal{R}(f) = 0$,
+$\mathcal{R}(f) \ge 0$,
 then
 \begin{align*}
-    \int \int y p_r(y|x) p_r(x) dxdy
-    = & \int \int f(x) p_r(y|x)p_r(x)dxdy \\
-    \mathbb{E}_{x \sim p_r(x)} \big[
-        \mathbb{E}_{y \sim p_r(y|x)} \big[
-        y \big] \big]
-    = & \mathbb{E}_{x \sim p_r(x)}
-        \big[ f(x) \big] \\
+    \big( \mathbb{E}_{y \sim p_r(y|x)}\big[y\big]
+        - f(x) \big)^2
+    \ge & 0 \\
     f^\star(x)
-    = & \mathbb{E}_{y \sim p_r(y|x)}\big[ y \big]
+    = & \mathbb{E}_{y \sim p_r(y|x)}
+        \big[y\big]
 \end{align*}
 
 \end{document}

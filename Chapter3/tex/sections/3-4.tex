@@ -1,0 +1,37 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+两类线性可分:
+\begin{align*}
+yf((\rho x_1 + (1-\rho) x_2), w)
+= & y\big( w^T (\rho x_1 + (1-\rho) x_2) + b \big) \\
+= & y \big( w^T \rho x_1 + w^T (1-\rho) x_2 + b \big) \\
+= & y \big( w^T \rho x_1 + \rho b \big)
+    + y \big( w^T (1-\rho) x_2 + (1-\rho) b \big) \\
+= & \rho y \big( w^T x_1 + b \big)
+    + (1-\rho) y \big( w^T x_2 + b \big) \\
+> & 0
+\end{align*}
+即,
+$yf((\rho x_1 + (1-\rho) x_2), w) > 0$
+\\
+
+多类线性可分:
+\begin{align*}
+f_c(\rho x_1 + (1-\rho) x_2)
+= & w_c^T\big( \rho x_1 + (1 - \rho) x_2 \big) + b_c \\
+= & \rho \big( w_c^T x_1 + b_c \big)
+    + (1-\rho) \big( w_c^T x_2 + b_c \big) \\
+> & \rho \big( w^T_{\tilde{c}} x_1 + b_{\tilde{c}} \big)
+    + (1-\rho) \big( w^T_{\tilde{c}} x_2 + b_{\tilde{c}} \big) \\
+= & w^T_{\tilde{c}}\big( \rho x_1 + (1 - \rho) x_2 \big) + b_{\tilde{c}} \\
+= & f_{\tilde{c}}(( \rho x_1 + (1 - \rho) x_2), w_{\tilde{c}})
+\end{align*}
+即,
+$
+f_{\tilde{c}}(\rho x_1 + (1-\rho) x_2)
+> f_{\tilde{c}}(( \rho x_1 + (1 - \rho) x_2), w_{\tilde{c}})
+$
+
+\end{document}

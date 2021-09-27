@@ -1,0 +1,20 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+可以
+\begin{align*}
+\big( y - \hat{y} \big)^2
+= & \big( y - \sigma(f(x,w)) \big)^2 \\
+= & y^2 - 2 y \sigma(f(x,w)) + \sigma^2(f(x,w)) \\
+= & 1 - 2y \sigma(f(x,w)) + \big(y\sigma(f(x,w)) \big)^2 \\
+= & \big( 1 - y \sigma(f(x,w)) \big)^2
+\end{align*}
+
+因为$\sigma(f(x,w))$的取值范围为$(0,1)$,
+故$y\sigma(f(x,w))$的取值范围为$(-1,1)$.
+
+损失函数$\mathcal{L} = \big( 1 - y \sigma(f(x,w)) \big)^2$
+在$(-1,1)$区间内单调递减, 所以可以使用.
+
+\end{document}

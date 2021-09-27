@@ -1,0 +1,50 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+根据学习算法, 我们有
+\begin{align*}
+w_k
+= \sum_{k=1}^K \big(
+    \phi(x^{(k)}, y^{(k)})
+    - \phi(x^{(k)}, \hat{y}^{(k)})
+    \big)
+\end{align*}
+
+计算$\| w_k \|^2$的上界
+\begin{align*}
+\| w_k \|^2
+= & \| w_{k-1}
+    + (\phi(x^{(k)}, y^{(k)})
+    - \phi(x^{(k)}, \hat{y}^{(k)})) \|^2 \\
+= & \| w_{k-1} \|^2
+    + \| \phi(x^{(k)}, y^{(k)}) - \phi(x^{(k)}, \hat{y}^{(k)}) \|^2
+    + 2 < w_{k-1}, \phi(x^{(k)}, y^{(k)}) - \phi(x^{(k)}, \hat{y}^{(k)}) > \\
+\le & \| w_{k-1} \|^2
+    + \| \phi(x^{(k)}, y^{(k)}) - \phi(x^{(k)}, z) \|^2 \\
+= & \| w_{k-1} \|^2 + R^2 \\
+\le &  K R^2
+\end{align*}
+
+计算$\| w_k \|^2$的下界
+\begin{align*}
+\| w_k \|^2
+= & 1 \cdot \| w_{k-1} \|^2 \\
+= & \| w^\star \| \cdot \| w_{k-1} \|^2 \\
+\ge & \| {w^\star}^T w_k \|^2 \\
+= & \| {w^\star}^T
+    \sum_{k=1}^K (\phi(x^{(k)}, y^{(k)})
+    - \phi(x^{(k)}, \hat{y}^{(k)})) \|^2 \\
+= & \| \sum_{k=1}^K < {w^\star}^T,
+    \phi(x^{(k)}, y^{(k)})
+    - \phi(x^{(k)}, \hat{y}^{(k)}) > \|^2 \\
+\ge & K^2 \gamma^2
+\end{align*}
+
+最终,
+\begin{align*}
+K R^2 \ge & K^2 \gamma^2 \\
+K \le & \frac{R^2}{\gamma^2}
+\end{align*}
+
+\end{document}

@@ -1,0 +1,43 @@
+%!TEX program = xelatex
+\documentclass[UTF8,12pt,a4paper]{ctexart} %UTF-8，fontsize 11，papersize A4
+\usepackage[T1]{fontenc} % 加载宏包 fontenc 防止某些符号显示不正常
+
+\usepackage[textwidth=18cm]{geometry} % 设置页宽=18
+%加载数学宏包
+\usepackage{amsmath}
+\usepackage{amssymb}
+%加载插图宏包 graphicx 以在 pdf 中插入图片
+\usepackage{graphicx}
+
+\usepackage{blindtext}
+\usepackage{bm}
+
+\usepackage{subfiles}
+
+\usepackage[colorlinks, linkcolor=blue]{hyperref}
+
+\parindent=0pt
+
+\begin{document}
+
+\section*{习题 4-1}
+
+\subfile{sections/4-1.tex}
+
+\section*{习题 4-2}
+
+\subfile{sections/4-2.tex}
+
+\section*{习题 4-3}
+
+\subfile{sections/4-3.tex}
+
+\section*{习题 4-5}
+
+\subfile{sections/4-5.tex}
+
+\section*{习题 4-7}
+
+\subfile{sections/4-7.tex}
+
+\end{document}

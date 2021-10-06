@@ -1,0 +1,105 @@
+\documentclass[]{subfiles}
+
+\begin{document}
+
+定义XOR问题如下:
+
+输入:
+\begin{align*}
+x
+= \left[
+    \begin{array}{l}
+        x_1 \\
+        x_2
+    \end{array}
+\right] \\
+x_i \in \{0, 1\}
+\end{align*}
+
+输出:
+\begin{align*}
+\hat{y}
+= \left\{
+    \begin{array}{ll}
+        1 & \textrm{if $x_1 \ne x_2$} \\
+        0 & \textrm{otherwise}
+    \end{array}
+\right.
+\end{align*}
+
+根据题意, 我们拥有以下模型参数:
+\begin{align*}
+w^{(1)}
+= & \left[
+    \begin{array}{cc}
+        w^{(1)}_{11} & w^{(1)}_{12} \\
+        w^{(1)}_{21} & w^{(1)}_{22}
+    \end{array}
+\right] \\
+b^{(1)}
+= & \left[
+    \begin{array}{c}
+        b^{(1)}_1 \\
+        b^{(1)}_2
+    \end{array}
+\right] \\
+w^{(2)}
+= & \left[
+    \begin{array}{cc}
+        w^{(2)}_1 & w^{(2)}_2
+    \end{array}
+\right] \\
+b^{(2)}
+= & \left[
+    \begin{array}{c}
+        b^{(2)}
+    \end{array}
+\right]
+\end{align*}
+
+故:
+\begin{align*}
+z^{(1)} = & w^{(1)}x + b^{(1)} \\
+a^{(1)} = & relu(z^{(1)}) \\
+\hat{y} = & w^{(2)}a^{(1)} + b^{(2)}
+\end{align*}
+
+则其中一解为:
+\begin{align*}
+w^{(1)} = & \left[
+    \begin{array}{cc}
+        1 & -1 \\
+        -1 & 1
+    \end{array}
+\right] \\
+b^{(1)} = & \left[
+    \begin{array}{c}
+        0 \\
+        0
+    \end{array}
+\right] \\
+w^{(2)} = & \left[
+    \begin{array}{cc}
+        1 & 1
+    \end{array}
+\right] \\
+b^{(2)} = & \left[
+    \begin{array}{c}
+        0
+    \end{array}
+\right]
+\end{align*}
+
+参数为以上解时, 则:
+\begin{align*}
+\begin{array}{cccc}
+    x & z^{(1)} & a^{(1)} & \hat{y} \\
+    \hline
+    [0,0]^T & [0,0]^T & [0,0]^T & 0 \\
+    {[0,1]^T} & [-1,1]^T & [0,1]^T & 1 \\
+    {[1,0]^T} & [1,-1]^T & [1,0]^T & 1 \\
+    {[1,1]^T} & [0,0]^T & [0,0]^T & 0
+\end{array}
+\end{align*}
+
+\end{document}

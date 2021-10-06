@@ -1,0 +1,15 @@
+\documentclass[]{subfiles}
+
+\begin{document}
+
+可以, 但这样做并不一定带来相应的好处.\\
+当我们使用正则化时, 通常是为了避免过拟合.
+考虑$y = wx + b$, 我们可以发现过拟合主要是由$w$对特定数据过于敏感导致的,
+而在这一问题中, $b$并未扮演重要的角色
+($w$是高维向量, 而$b$只是一个单一数值).
+故对$b$进行正则化处理并不能造成多少效果.
+
+引用自:
+\href{https://www.coursera.org/learn/deep-neural-network/lecture/Srsrc/regularization}{Coursera - Improving Deep Neural Networks - Regularization}
+
+\end{document}

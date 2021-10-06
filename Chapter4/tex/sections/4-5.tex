@@ -1,0 +1,20 @@
+\documentclass[]{subfiles}
+
+\begin{document}
+
+令参数数量为$n$:
+\begin{align*}
+n
+& = \frac{N}{L}(M_0 + 1)
+    + (L-1)\frac{N}{L}(\frac{N}{L} + 1)
+    + 1 \cdot (\frac{N}{L} + 1)
+\end{align*}
+
+其中:
+\begin{itemize}
+\item $\frac{N}{L}(M_0 + 1)$为输入层到第一层隐藏层之间的参数
+\item $(L-1)\frac{N}{L}(\frac{N}{L} + 1)$为第一层隐藏层到最后一层隐藏层之间的参数
+\item $1 \cdot (\frac{N}{L} + 1)$为最后一层隐藏层到输出层间的参数
+\end{itemize}
+
+\end{document}

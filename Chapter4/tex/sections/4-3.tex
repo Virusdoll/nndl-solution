@@ -1,0 +1,57 @@
+\documentclass[]{subfiles}
+
+\begin{document}
+
+对第一个隐藏层的第一个神经元, 我们有:
+\begin{align*}
+z^{(1)}_1 = & w^{(1)}_1 x + b^{(1)}_1 \\
+a^{(1)}_1 = & relu(z^{(1)}_1) \\
+= & \max (0, z^{(1)}_1)
+\end{align*}
+
+现假设, 对训练集中任意$x$, 都有$z^{(1)}_1 \le 0$.
+
+考虑更新参数时计算的梯度:
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial w^{(1)}_1}
+= & \frac{\partial z^{(1)}_1}{\partial w^{(1)}_1}
+    \frac{\partial a^{(1)}_1}{\partial z^{(1)}_1}
+    \frac{\partial \mathcal{L}}{\partial a^{(1)}_1} \\
+= & x^T \cdot \mathbf{1}\{z^{(1)}_1 > 0\} \cdot
+    \frac{\partial \mathcal{L}}{\partial a^{(1)}_1} \\
+= & x^T \cdot 0 \cdot
+    \frac{\partial \mathcal{L}}{\partial a^{(1)}_1} \\
+= & 0
+\end{align*}
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial b^{(1)}_1}
+= & \frac{\partial z^{(1)}_1}{\partial b^{(1)}_1}
+    \frac{\partial a^{(1)}_1}{\partial z^{(1)}_1}
+    \frac{\partial \mathcal{L}}{\partial a^{(1)}_1} \\
+= & 1 \cdot \mathbf{1}\{z^{(1)}_1 > 0\} \cdot
+    \frac{\partial \mathcal{L}}{\partial a^{(1)}_1} \\
+= & 1 \cdot 0 \cdot
+    \frac{\partial \mathcal{L}}{\partial a^{(1)}_1} \\
+= & 0
+\end{align*}
+
+考虑更新参数时的情况:
+\begin{align*}
+w^{(1)}_1
+& := w^{(1)}_1 - \alpha \frac{\partial \mathcal{L}}{\partial w^{(1)}_1} \\
+& = w^{(1)}_1 \\
+b^{(1)}_1
+& := b^{(1)}_1 - \alpha \frac{\partial \mathcal{L}}{\partial b^{(1)}_1} \\
+& = b^{(1)}_1
+\end{align*}
+
+这意味着, 在该数据集中, $w^{(1)}_1$和$b^{(1)}_1$将永远不会被更新, 且对整个模型毫无作用.
+
+即, 它死亡了.
+
+一种解决方案为:
+替换rule函数或对其进行修改, 使$z^{(1)}_1 \le 0$时,
+通过激活函数依旧能输出一个微小的正数, 以保证进行反向传播时,
+其梯度不为0.
+
+\end{document}

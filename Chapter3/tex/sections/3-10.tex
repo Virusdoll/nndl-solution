@@ -1,0 +1,32 @@
+\documentclass[]{subfiles}
+
+\begin{document}
+
+\begin{align*}
+k(x, z)
+& = (1 + x^Tz)^2 \\
+& = 1 + 2 x^T z + (x^T z)^2 \\
+& = 1 + 2 \sum_{i=1}^n x_i z_i + \sum_{i,j=1}^n x_i z_i x_j z_j \\
+& = 1 + \sum_{i=1}^n \sqrt{2} x_i \sqrt{2} z_i
+    + \sum_{i,j=1}^n x_i x_j z_i z_j \\
+& = [1, \sqrt{2}x_1, \cdots, \sqrt{2}x_n, x_1^2, \cdots, x_n^2,
+    \sqrt{2}x_1 x_2, \sqrt{2}x_1 x_3 \cdots, \sqrt{2}x_{n-1}x_{n}]
+    \left[
+        \begin{array}{c}
+            1 \\
+            \sqrt{2}z_1 \\
+            \vdots \\
+            \sqrt{2}z_n \\
+            z_1^2 \\
+            \vdots \\
+            z_n^2 \\
+            \sqrt{2}z_1 z_2 \\
+            \sqrt{2}z_1 z_3 \\
+            \vdots \\
+            \sqrt{2}z_{n-1}z_{n}
+        \end{array}
+    \right] \\
+& = \phi(x)^T \phi(z)
+\end{align*}
+
+\end{document}

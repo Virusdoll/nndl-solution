@@ -2,36 +2,33 @@
 
 \begin{document}
 
-两类线性可分:
-\begin{align*}
-yf((\rho x_1 + (1-\rho) x_2), w)
-= & y\big( w^T (\rho x_1 + (1-\rho) x_2) + b \big) \\
-= & y \big( w^T \rho x_1 + w^T (1-\rho) x_2 + b \big) \\
-= & y \big( w^T \rho x_1 + \rho b \big)
-    + y \big( w^T (1-\rho) x_2 + (1-\rho) b \big) \\
-= & \rho y \big( w^T x_1 + b \big)
-    + (1-\rho) y \big( w^T x_2 + b \big) \\
-> & 0
-\end{align*}
-即,
-$yf((\rho x_1 + (1-\rho) x_2), w) > 0$
-\\
+\subsection*{(1)}
 
-多类线性可分:
-\begin{align*}
-f_c(\rho x_1 + (1-\rho) x_2)
-= & w_c^T\big( \rho x_1 + (1 - \rho) x_2 \big) + b_c \\
-= & \rho \big( w_c^T x_1 + b_c \big)
-    + (1-\rho) \big( w_c^T x_2 + b_c \big) \\
-> & \rho \big( w^T_{\tilde{c}} x_1 + b_{\tilde{c}} \big)
-    + (1-\rho) \big( w^T_{\tilde{c}} x_2 + b_{\tilde{c}} \big) \\
-= & w^T_{\tilde{c}}\big( \rho x_1 + (1 - \rho) x_2 \big) + b_{\tilde{c}} \\
-= & f_{\tilde{c}}(( \rho x_1 + (1 - \rho) x_2), w_{\tilde{c}})
-\end{align*}
-即,
-$
-f_{\tilde{c}}(\rho x_1 + (1-\rho) x_2)
-> f_{\tilde{c}}(( \rho x_1 + (1 - \rho) x_2), w_{\tilde{c}})
-$
+取任意类$c$,
+任意类$\tilde{c} (\forall \tilde{c} \ne c)$,
+$x_c$ 为一$c$类样本
+
+因为类$c$对其它类线性可分,
+故$f(x_c, w_c^\star) > f(x_c, w_{\tilde{c}}^\star)$
+
+显然, 对所有C个类, 都存在一个权重向量$w_c^\star, 1 \le c \le C$,
+使得
+$f(x_c, w_c^\star) > f(x_c, w_{\tilde{c}}^\star), \forall \tilde{c} \ne c$
+成立
+
+故训练集线性可分
+
+\subsection*{(2)}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.6\textwidth]{../figure/3-5.png}
+    \caption{每两个类线性可分}
+    \label{img3-5}
+\end{figure}
+
+如图\ref*{img3-5}所示,
+叉, 三角, 圆为不同的三类, 其中两两线性可分,
+但该数据集并不是线性可分的
 
 \end{document}

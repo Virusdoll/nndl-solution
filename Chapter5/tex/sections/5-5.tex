@@ -1,0 +1,43 @@
+\documentclass{subfiles}
+
+\begin{document}
+
+let
+\begin{align*}
+x
+& = \left[
+    \begin{array}{ccc}
+        x_{11} & x_{12} & x_{13} \\
+        x_{21} & x_{22} & x_{23} \\
+        x_{31} & x_{32} & x_{33}
+    \end{array}
+\right] \\
+w
+& = \left[
+    \begin{array}{cc}
+        w_{11} & w_{12} \\
+        w_{21} & w_{22}
+    \end{array}
+\right] \\
+x' 
+& = [x_{11}, x_{12}, x_{13},
+     x_{21}, x_{22}, x_{23},
+     x_{31}, x_{32}, x_{33}]^T
+\end{align*}
+
+then,
+\begin{align*}
+z
+& = w \otimes x \\
+& = \left[
+    \begin{array}{ccccccccc}
+        w_{11} & x_{12} & 0 & w_{21} & w_{22} & 0 & 0 & 0 & 0 \\
+        0 & w_{11} & x_{12} & 0 & w_{21} & w_{22} & 0 & 0 & 0 \\
+        0 & 0 & 0 & w_{11} & x_{12} & 0 & w_{21} & w_{22} & 0 \\
+        0 & 0 & 0 & 0 & w_{11} & x_{12} & 0 & w_{21} & w_{22} \\
+    \end{array}
+\right] x' \\
+& = C x'
+\end{align*}
+
+\end{document}

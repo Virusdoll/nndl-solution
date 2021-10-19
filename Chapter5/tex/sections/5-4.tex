@@ -1,0 +1,40 @@
+\documentclass{subfiles}
+
+\begin{document}
+
+\subsection*{(1) 3x3}
+
+time complexity:
+\begin{align*}
+& (100 * 100) * (3 * 3) * 256 * 256 \\
+= & 5.89824e9
+\end{align*}
+
+space complexity:
+\begin{align*}
+& 100 * 100 * 256 \\
+& + (3 * 3) * 256 * 256 \\
+& + 100 * 100 * 256 \\
+= & 2560000 + 589824 + 2560000 \\
+= & 5.709824e6
+\end{align*}
+
+\subsection*{(2) 1x1 then 3x3}
+
+time complexity:
+\begin{align*}
+& (100 * 100) * (1 * 1) * 256 * 64 \\
+& + (100 * 100) * (3 * 3) * 64 * 256 \\
+= & 1.6384e9
+\end{align*}
+
+space complexity:
+\begin{align*}
+& (100 * 100) * 256 \\
+& + (1 * 1) * 256 * 64 \\
+& + (100 * 100) * 64 \\
+& + (3 * 3) * 64 * 256 \\
+= & 3.36384e6
+\end{align*}
+
+\end{document}

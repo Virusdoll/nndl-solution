@@ -1,0 +1,37 @@
+\documentclass{subfiles}
+
+\begin{document}
+
+\subsection*{(1)}
+
+\begin{align*}
+d^2 x(t)
+& = d(dx(t)) \\
+& \approx d(x(t + \Delta t) - x(t)) \\
+& \approx x(t+ \Delta t) - x(t) - (x(t) - x(t - \Delta t)) \\
+& = x(t + \Delta) + x(t - \Delta t) - 2x(t) \\
+& \approx x(t + 1) + x(t - 1) - 2 x(t)
+\end{align*}
+
+\subsection*{(2)}
+
+\begin{align*}
+\nabla^2 f(x, y)
+= & d^2_x f(x, y) + d^2_y f(x, y) \\
+\approx & f(x+1, y) + f(x-1, y) - 2 f(x,y) \\
+& + f(x, y+1) + f(x, y-1) - 2f(x,y)
+\end{align*}
+
+so,
+\begin{align*}
+w
+= \left[
+    \begin{array}{ccc}
+        0 & 1 & 0 \\
+        1 & -4 & 1 \\
+        0 & 1 & 0
+    \end{array}
+\right]
+\end{align*}
+
+\end{document}

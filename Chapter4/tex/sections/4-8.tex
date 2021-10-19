@@ -1,0 +1,32 @@
+\documentclass{subfiles}
+
+\begin{document}
+
+let
+\begin{align*}
+z^{[l]} & = w^{[l]} a^{[l-1]} + b^{[l]} \\
+a^{[l]} & = g(z^{[l]}) \\
+z^{[l+1]} & = w^{[l + 1]} a^{[l]} + b^{[l+1]} \\
+a^{[l+1]} & = g(z^{[l+1]})
+\end{align*}
+
+then
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial w^{[l]}}
+& = \frac{\partial z^{[l]}}{\partial w^{[l]}}
+    \frac{\partial a^{[l]}}{\partial z^{[l]}}
+    \frac{\partial z^{[l+1]}}{\partial a^{[l]}}
+    \frac{\partial a^{[l+1]}}{\partial z^{[l+1]}}
+    \frac{\partial \mathcal{L}}{\partial a^{[l+1]}} \\
+& = a^{[l-1]} g'(z^{[l]}) w^{[l+1]} g'(z^{[l+1]})
+    \frac{\partial \mathcal{L}}{\partial a^{[l+1]}}
+\end{align*}
+
+if $w^{[l+1]}_i = 0, \forall w^{[l+1]}_i \in w^{[l+1]}$,
+then $\frac{\partial \mathcal{L}}{\partial w^{[l]}} = 0$.
+This means that parameters will never be updated.
+
+\href{https://www.deeplearning.ai/ai-notes/initialization/}{Initializing neural networks} \
+This website has a good online visualisation tool.
+
+\end{document}

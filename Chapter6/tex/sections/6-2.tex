@@ -1,0 +1,58 @@
+\documentclass{subfiles}
+
+\begin{document}
+
+we have:
+\begin{align*}
+z_t & = U h_{t-1} + Wx_t + b \\
+h_t & = f(z_t) \\
+\delta_{t,k} & = \frac{\partial \mathcal{L}_t}{\partial z_k}
+\end{align*}
+
+for $\frac{\partial \mathcal{L}}{\partial W}$:
+\begin{align*}
+\frac{\partial \mathcal{L}_t}{\partial W}
+& = \frac{\partial z_t}{\partial W}
+    \frac{\partial h_t}{\partial z_t}
+    \frac{\partial \mathcal{L}_t}{\partial h_t} \\
+& = \big( \frac{\partial h_{t-1}}{\partial W}
+          \frac{\partial z_t}{\partial h_{t-1}}
+          + x_t^T \big)
+    \frac{\partial h_t}{\partial z_t}
+    \frac{\partial \mathcal{L}_t}{\partial h_t} \\
+& = \big( \frac{\partial z_{t-1}}{\partial W}
+          \frac{\partial h_{t-1}}{\partial z_{t-1}}
+          \frac{\partial z_t}{\partial h_{t-1}}
+          + x_t^T \big)
+    \frac{\partial h_t}{\partial z_t}
+    \frac{\partial \mathcal{L}_t}{\partial z_t} \\
+& = \frac{\partial z_{t-1}}{\partial W}
+    \frac{\partial \mathcal{L}_t}{\partial z_{t-1}}
+    + x^T_t \frac{\partial \mathcal{L}_t}{\partial z_t} \\
+& = \frac{\partial z_{t-1}}{\partial W} \delta_{t,t-1}
+    + x^T_t \delta_{t,t} \\
+& = \sum^t_{k=1} x^T_k \delta_{t,k} \\
+\frac{\partial \mathcal{L}}{\partial W}
+& = \sum^T_{t=1} \sum^t_{k=1} x^T_k \delta_{t,k}
+\end{align*}
+
+for $\frac{\partial \mathcal{L}}{\partial b}$:
+\begin{align*}
+\frac{\partial \mathcal{L}_t}{\partial b}
+& = \frac{\partial z_t}{\partial b}
+    \frac{\partial h_t}{\partial z_t}
+    \frac{\partial \mathcal{L}_t}{\partial h_t} \\
+& = \big( \frac{\partial z_{t-1}}{\partial b}
+          \frac{\partial h_{t-1}}{\partial z_{t-1}}
+          \frac{\partial z_t}{\partial h_{t-1}}
+          + I \big)
+    \frac{\partial h_t}{\partial z_t}
+    \frac{\partial \mathcal{L}_t}{\partial h_t} \\
+& = \frac{\partial z_{t-1}}{\partial b} \delta_{t,t-1}
+    + \delta_{t,t} \\
+& = \sum^t_{k=1} \delta_{t,k} \\
+\frac{\partial \mathcal{L}}{\partial b}
+& = \sum^T_{t=1} \sum^t_{k=1} \delta_{t,k}
+\end{align*}
+
+\end{document}
